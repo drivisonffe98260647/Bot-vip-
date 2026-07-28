@@ -19,8 +19,7 @@ def keep_alive():
 keep_alive()
 
 # ==========================================
-# 2. COLE TODO O RESTO DO SEU CÓDIGO ANTIGO AQUI
-# (Suas 200+ linhas com o Token, bot, handlers, Pix, etc.)
+# 2. CÓDIGO DO BOT DO TELEGRAM
 # ==========================================
 import telebot
 from telebot import types
@@ -31,11 +30,10 @@ from telebot import types
 
 TOKEN = "8719924690:AAH9tzDmztgBGFiq9iT4PERKFoy0eIjZXf4"
 ADMIN_ID = 8577165097  # O seu ID numérico do Telegram
-ID_GRUPO_VIP = - 1003314477346  # ID do seu Grupo VIP (o bot precisa ser admin lá)
+ID_GRUPO_VIP = -1003314477346  # ID do seu Grupo VIP (o bot precisa ser admin lá)
 CHAVE_PIX = "e41ef017-2eb7-460e-aa78-49a34a1f9f92"  # A sua chave Pix
 
-bot.send_video(message.chat.id, "8577165097", caption="Assista ao vídeo de demonstração")
-
+# Inicializa o bot corretamente PRIMEIRO de tudo
 bot = telebot.TeleBot(TOKEN)
 
 # ==========================
@@ -55,21 +53,11 @@ def start(message):
     )
 
 # ==========================
-# MENU DE COMPRA E VÍDEO
+# MENU DE COMPRA
 # ==========================
 
 @bot.message_handler(func=lambda m: m.text == "🛒 Comprar Acesso VIP")
 def comprar(message):
-    try:
-        with open(VIDEO_PATH, "rb") as video:
-            bot.send_video(
-                message.chat.id,
-                video,
-                caption="🎥 Assista ao vídeo de demonstração antes de escolher o seu plano."
-            )
-    except:
-        pass
-
     teclado = types.InlineKeyboardMarkup()
     teclado.add(types.InlineKeyboardButton("🗓️ Plano Semanal - R$ 4,50", callback_data="plano_semanal"))
     teclado.add(types.InlineKeyboardButton("📅 Plano Mensal - R$ 9,75", callback_data="plano_mensal"))
@@ -199,7 +187,7 @@ def rejeitar_pagamento(message):
         try:
             bot.send_message(
                 cliente_id,
-                "❌ **Comprovante Recusado ou Inválido.**\n\nO pagamento não foi confirmado ou o comprovante enviado não é válido. Verifique os dados e tente novamente ou entre em contato com o suporte.",
+                "❌ **Comprovante Recusado ou Inválido.**\n\nO pagamento não foi confirmado ou o comprovante enviado não é válido. Os dados informados estão incorretos ou a transação não foi localizada.",
                 parse_mode="Markdown"
             )
 
@@ -229,10 +217,10 @@ def desconhecido(message):
 # ==========================
 
 print("-----------------------------------")
-print("🤖 Bot manual com /aprovar rodando!")
+print("🤖 Bot de vendas rodando com sucesso!")
 print("-----------------------------------")
 
 bot.infinity_polling(
     timeout=30,
     long_polling_timeout=30
-          )
+)
