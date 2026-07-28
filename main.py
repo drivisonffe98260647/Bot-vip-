@@ -10,7 +10,7 @@ ADMIN_ID = 8577165097  # O seu ID numérico do Telegram
 ID_GRUPO_VIP = - 1003314477346  # ID do seu Grupo VIP (o bot precisa ser admin lá)
 CHAVE_PIX = "e41ef017-2eb7-460e-aa78-49a34a1f9f92"  # A sua chave Pix
 
-VIDEO_PATH = "/storage/emulated/0/Movies/Telegram/demo.mp4"  # Caminho do seu vídeo (opcional)
+VIDEO_PATH = "demo.mp4"  # Caminho do seu vídeo (opcional)
 
 bot = telebot.TeleBot(TOKEN)
 
