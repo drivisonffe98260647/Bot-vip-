@@ -2,7 +2,7 @@ import os
 from flask import Flask
 from threading import Thread
 
-# Cria um servidor web falso para o Render não dar erro de porta
+# 1. Servidor web falso para o Render não dar erro de porta
 app = Flask('')
 
 @app.route('/')
@@ -16,11 +16,12 @@ def keep_alive():
     t = Thread(target=run)
     t.start()
 
-# Inicia o servidor web falso em segundo plano
 keep_alive()
 
-# ---> COLE O RESTO DO SEU CÓDIGO DO BOT ABAIXO DAQUI <---
-
+# ==========================================
+# 2. COLE TODO O RESTO DO SEU CÓDIGO ANTIGO AQUI
+# (Suas 200+ linhas com o Token, bot, handlers, Pix, etc.)
+# ==========================================
 import telebot
 from telebot import types
 
